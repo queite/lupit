@@ -1,0 +1,17 @@
+version: '3.9'
+networks:
+  lupit:
+
+services:
+  db:
+    image: postgres:latest
+    container_name: lupit-db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: lupit
+      POSTGRES_PASSWORD: lupit
+      POSTGRES_DB: lupit-db
+    networks:
+      - lupit
