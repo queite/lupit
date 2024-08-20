@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { CreateTeam } from 'src/dtos/create-team';
+import { CreateTeam } from 'src/dtos/create.team';
 import { TeamService } from 'src/services/team.service';
 
 @Controller()

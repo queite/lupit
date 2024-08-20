@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Teams } from '@prisma/client';
-import { CreateTeam } from 'src/dtos/create-team';
+import { CreateTeam } from 'src/dtos/create.team';
 import { PrismaService } from '../../database/prisma.service';
-import { TeamsRepository } from '../team.repository';
+import { TeamsRepository } from '../teams.repository';
 
 @Injectable()
 export class PrismaTeamsRepository implements TeamsRepository {

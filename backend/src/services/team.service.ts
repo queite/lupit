@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { CreateTeam } from "src/dtos/create-team";
-import { TeamsRepository } from "src/repositories/team.repository";
+import { CreateTeam } from "src/dtos/create.team";
+import { TeamsRepository } from "src/repositories/teams.repository";
 
 @Injectable()
 export class TeamService {
