@@ -15,7 +15,11 @@ export class PrismaTeamsRepository implements TeamsRepository {
   }
 
   async list() {
-    return await this.prisma.teams.findMany()
+    return await this.prisma.teams.findMany({
+      include: {
+        players: true
+      }
+    })
   }
 
   async update(id: number, data: CreateTeam) {
