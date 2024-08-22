@@ -30,6 +30,7 @@ const PlayerTable: React.FC = () => {
           <th>Nome</th>
           <th>Time</th>
           <th>Data de Criação</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -39,6 +40,14 @@ const PlayerTable: React.FC = () => {
             <td>{player.name}</td>
             <td>{player.teams.name}</td>
             <td>{new Date(player.createdAt).toLocaleDateString()}</td>
+            <td>
+              <button>
+                <i className="fas fa-pencil-alt"></i>
+              </button>
+              <button>
+                <i className="fas fa-trash-alt"></i>
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>
