@@ -23,7 +23,13 @@ export class PlayerService {
 
   async update(id: number, data: CreatePlayer) {
     await this.existingPlayer(id)
-    return await this.playersRepository.update(id, data)
+
+    const treatedData = {
+      name: data.name,
+      age: Number(data.age),
+      teamId: Number(data.teamId)
+    }
+    return await this.playersRepository.update(id, treatedData)
   }
 
   async delete(id: number) {
