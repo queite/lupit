@@ -7,7 +7,12 @@ export class PlayerService {
   constructor(private playersRepository: PlayersRepository) {}
 
   async create(data: CreatePlayer) {
-    const player = await this.playersRepository.create(data)
+    const convertedData = {
+      name: data.name,
+      age: Number(data.age),
+      teamId: Number(data.teamId)
+    }
+    const player = await this.playersRepository.create(convertedData)
 
     return player
   }
