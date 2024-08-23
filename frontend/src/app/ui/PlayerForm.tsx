@@ -1,43 +1,47 @@
-import React from 'react';
+"use client"
+
+import React, { useEffect, useState } from 'react'
+import { createPlayer } from '../lib/actions'
 
 interface PlayerFormProps {
-  title: string;
+  title: string
+}
+
+interface Team {
+  id: string
+  name: string
 }
 
 export function PlayerForm({ title }: PlayerFormProps) {
-  async function handleCreatePlayer(form: FormData) {
-    "use server"
+  const [teams, setTeams] = useState<Team[]>([])
 
-    const name = form.get('name');
-    const age = form.get('age');
-    const team = form.get('team');
-
-    if (!name || !age || !team) {
-      return;
+  useEffect(() => {
+    async function fetchTeams() {
+      const response = await fetch("http://localhost:3333/teams")
+      const data = await response.json()
+      setTeams(data)
     }
 
-    await fetch("http://localhost:3333/player", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name,
-        age,
-        team
-      })
-    });
-  }
+    fetchTeams()
+  }, [])
+
 
   return (
     <div>
       <p>{title}</p>
-      <form action={handleCreatePlayer}>
+      <form action={createPlayer}>
         <input type="text" name="name" placeholder="Nome" />
         <input type="number" name="age" placeholder="Idade" />
-        <input type="text" name="team" placeholder="Time" />
-        <button type="submit">Salvar</button>
+        <select name="teamId">
+          <option value="">Selecione um time</option>
+          {teams.map((team) => (
+            <option key={team.id} value={team.id}>
+              {team.name}
+            </option>
+          ))}
+        </select>
+        <button type='submit'>Salvar</button>
       </form>
     </div>
-  );
+  )
 }
