@@ -1,6 +1,6 @@
-import Header from "@/components/Header";
-import PlayerTable from "@/components/PlayerTable";
-import styles from "./page.module.css";
+import Header from "@/app/ui/Header";
+import PlayerTable from "@/app/ui/PlayerTable";
+import Link from "../../node_modules/next/link";
 
 export default function Home() {
   return (
@@ -9,8 +9,11 @@ export default function Home() {
       <div className="container">
         <Header title="FutLovers"/>
         <div className="home-title">
+          
           <h1>Jogadores</h1>
-          <button>+   ADICIONAR JOGADOR</button>
+          <Link href="/jogador/novo">
+            <button>+   ADICIONAR JOGADOR</button>
+          </Link>
         </div>
         <PlayerTable/>
       </div>
