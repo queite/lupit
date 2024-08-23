@@ -7,7 +7,7 @@ interface PlayerFormProps {
   title: string
 }
 
-interface Team {
+export interface Team {
   id: string
   name: string
 }

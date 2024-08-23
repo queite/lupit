@@ -1,11 +1,14 @@
 "use client"
 import React, { useEffect, useState } from 'react';
+import Link from '../../../node_modules/next/link';
 
-interface Player {
-  id: number;
-  name: string;
-  teams: { name: string};
-  createdAt: string;
+export interface Player {
+  id: number
+  name: string
+  age: number
+  teams: { name: string}
+  createdAt: string
+  updatedAt: string
 }
 
 const PlayerTable: React.FC = () => {
@@ -15,7 +18,7 @@ const PlayerTable: React.FC = () => {
     const fetchPlayers = async () => {
       const response = await fetch('http://localhost:3333/players');
       const data = await response.json();
-      console.log(data)
+
       setPlayers(data);
     };
 
@@ -41,9 +44,11 @@ const PlayerTable: React.FC = () => {
             <td>{player.teams.name}</td>
             <td>{new Date(player.createdAt).toLocaleDateString()}</td>
             <td>
-              <button>
-                <i className="fas fa-pencil-alt"></i>
-              </button>
+              <Link href={`/jogador/${player.id}`}>
+                <button >
+                  <i className="fas fa-pencil-alt"></i>
+                </button>
+              </Link>
               <button>
                 <i className="fas fa-trash-alt"></i>
               </button>
