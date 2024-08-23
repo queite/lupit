@@ -49,12 +49,12 @@ export async function updatePlayer(id: number, formData: FormData) {
 }
 
 export async function deletePlayer(id: number) {
-  await fetch(`http://localhost:3333/player/${id}`, {
+  const response = await fetch(`http://localhost:3333/player/${id}`, {
     method: "DELETE",
     headers: {
       'Content-Type': 'application/json'
     },
   })
 
-  revalidatePath('/')
+  return response.ok
 }
