@@ -11,6 +11,11 @@ export class PlayerController {
     return this.playerService.create(data);
   }
 
+  @Get('player/:id')
+  getById(@Param('id') id: number) {
+    return this.playerService.existingPlayer(Number(id))
+  }
+
   @Get('players')
   list() {
     return this.playerService.list()

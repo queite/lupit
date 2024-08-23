@@ -35,5 +35,7 @@ export class PlayerService {
     const existingPlayer = await this.playersRepository.findById(id)
 
     if (!existingPlayer) throw new NotFoundException("Player not found")
+
+    return existingPlayer
   }
 }
