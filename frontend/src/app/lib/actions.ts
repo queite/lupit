@@ -44,6 +44,17 @@ export async function updatePlayer(id: number, formData: FormData) {
     body: JSON.stringify(rawFormData)
   })
 
-  revalidatePath('/');
-  redirect('/');
+  revalidatePath('/')
+  redirect('/')
+}
+
+export async function deletePlayer(id: number) {
+  await fetch(`http://localhost:3333/player/${id}`, {
+    method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+
+  revalidatePath('/')
 }

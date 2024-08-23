@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Link from '../../../node_modules/next/link';
+import { deletePlayer } from '../lib/actions';
 
 export interface Player {
   id: number
@@ -49,9 +50,11 @@ const PlayerTable: React.FC = () => {
                   <i className="fas fa-pencil-alt"></i>
                 </button>
               </Link>
-              <button>
-                <i className="fas fa-trash-alt"></i>
-              </button>
+              <form action={deletePlayer.bind(null, player.id)}>
+                <button>
+                  <i className="fas fa-trash-alt"></i>
+                </button>
+              </form>
             </td>
           </tr>
         ))}
